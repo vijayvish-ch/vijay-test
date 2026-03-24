@@ -12,6 +12,14 @@ on:
           - dev
           - test
           - prod
+      pipeline_name:
+        description: "Pipeline resource to run"
+        required: true
+        default: "lzn_junction_bloodwork"
+        type: choice
+        options:
+          - lzn_junction_bloodwork
+          - raw_junction_bloodwork
 
 jobs:
   deploy:
@@ -38,3 +46,9 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: databricks bundle deploy -t ${{ github.event.inputs.target }}
+
+      - name: Run pipeline
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: databricks bundle run -t ${{ github.event.inputs.target }} ${{ github.event.inputs.pipeline_name }}
