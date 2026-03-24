@@ -11,7 +11,7 @@ resources:
       continuous: false
       channel: "CURRENT"
       photon: true
-      serverless: true
+      serverless: false
 
       libraries:
         - notebook:
@@ -35,7 +35,7 @@ resources:
       continuous: false
       channel: "CURRENT"
       photon: true
-      serverless: true
+      serverless: false
 
       libraries:
         - notebook:
