@@ -22,7 +22,7 @@ resources:
         schema: "lzn_junction_bloodwork"
         volume_name: "${var.volume_name}"
         env: "${var.env}"
-        source_folder: "junction_bloodwork"
+        source_folder: "vol_junction_bloodwork"
 
       tags:
         tenant: "ch"
