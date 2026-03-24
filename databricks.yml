@@ -1,0 +1,96 @@
+bundle:
+  name: junction-bloodwork
+
+resources:
+  pipelines:
+    lzn_junction_bloodwork:
+      name: "ch-lzn-dlt-pipeline-junction-bloodwork-${var.env}"
+      catalog: "${var.catalog}"
+      schema: "lzn_junction_bloodwork"
+      development: false
+      continuous: false
+      channel: "CURRENT"
+      photon: true
+      serverless: true
+
+      libraries:
+        - notebook:
+            path: ./notebooks/lzn_dlt_junction_bloodwork.py
+
+      configuration:
+        catalog: "${var.catalog}"
+        schema: "lzn_junction_bloodwork"
+        volume_name: "${var.volume_name}"
+        env: "${var.env}"
+        source_folder: "junction_bloodwork"
+
+      tags:
+        tenant: "ch"
+
+    raw_junction_bloodwork:
+      name: "ch-raw-dlt-pipeline-junction-bloodwork-${var.env}"
+      catalog: "${var.catalog}"
+      schema: "raw_junction_bloodwork"
+      development: false
+      continuous: false
+      channel: "CURRENT"
+      photon: true
+      serverless: true
+
+      libraries:
+        - notebook:
+            path: ./notebooks/raw_dlt_junction_bloodwork.py
+
+      configuration:
+        catalog: "${var.catalog}"
+        schema: "raw_junction_bloodwork"
+        volume_name: "${var.volume_name}"
+        env: "${var.env}"
+
+      tags:
+        tenant: "ch"
+
+variables:
+  catalog:
+    description: Catalog name
+  volume_name:
+    description: Volume name
+  env:
+    description: Deployment environment
+
+targets:
+  dev:
+    default: true
+    variables:
+      catalog: dev_cascaid
+      volume_name: lzn_junction_bloodwork
+      env: dev
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - group_name: users
+        level: CAN_MANAGE
+    run_as:
+      service_principal_name: sp_dev_ch_xfrm
+      
+
+  test:
+    variables:
+      catalog: test_cascaid
+      volume_name: lzn_junction_bloodwork
+      env: test
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - group_name: users
+        level: CAN_MANAGE
+
+  prod:
+    variables:
+      catalog: prod_cascaid
+      volume_name: lzn_junction_bloodwork
+      env: prod
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      service_principal_name: sp_prod_ch_xfrm
