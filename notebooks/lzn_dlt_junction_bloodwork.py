@@ -30,7 +30,7 @@ CATALOG = spark.conf.get("catalog")
 SCHEMA = spark.conf.get("schema")
 VOLUME_NAME = spark.conf.get("volume_name")
 ENV = spark.conf.get("env")
-SOURCE_FOLDER = spark.conf.get("source_folder", "junction_bloodwork")
+SOURCE_FOLDER = spark.conf.get("source_folder", "vol_junction_bloodwork")
 
 # -----------------------------------------------------------------------------
 # PATHS
