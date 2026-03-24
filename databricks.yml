@@ -70,8 +70,8 @@ targets:
     permissions:
       - group_name: users
         level: CAN_MANAGE
-    #run_as:
-     # service_principal_name: sp_dev_cascaid_xfrm
+    run_as:
+      service_principal_name: 2e829c9a-1240-4277-9040-40a6f1970a3b
       
 
   test:
