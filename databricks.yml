@@ -71,7 +71,8 @@ targets:
       - group_name: users
         level: CAN_MANAGE
     run_as:
-      service_principal_name: 2e829c9a-1240-4277-9040-40a6f1970a3b
+      #service_principal_name: 2e829c9a-1240-4277-9040-40a6f1970a3b
+      service_principal_name: 1496f6cd-02ef-4c5e-ad0a-402c03bbaf00
       
 
   test:
