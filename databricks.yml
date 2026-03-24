@@ -1,5 +1,5 @@
 bundle:
-  name: junction-bloodwork
+  name: junction-bloodwork-test
 
 resources:
   pipelines:
