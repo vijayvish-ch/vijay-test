@@ -12,7 +12,7 @@ resources:
 
       libraries:
         - notebook:
-            path: ./notebooks/lzn_dlt_junction_bloodwork.py
+            path: ../notebooks/lzn_dlt_junction_bloodwork.py
 
       configuration:
         catalog: "${var.catalog}"
@@ -36,7 +36,7 @@ resources:
 
       libraries:
         - notebook:
-            path: ./notebooks/raw_dlt_junction_bloodwork.py
+            path: ../notebooks/raw_dlt_junction_bloodwork.py
 
       configuration:
         catalog: "${var.catalog}"
