@@ -2,7 +2,7 @@ bundle:
   name: junction-bloodwork-test
 
 include:
-  - resources/*.ym
+  - resources/*.yml
 
 variables:
   catalog:
