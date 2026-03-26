@@ -1,54 +1,8 @@
 bundle:
   name: junction-bloodwork-test
 
-resources:
-  pipelines:
-    lzn_junction_bloodwork:
-      name: "ch-lzn-dlt-pipeline-junction-bloodwork1-${var.env}"
-      catalog: "${var.catalog}"
-      schema: "lzn_junction_bloodwork"
-      development: false
-      continuous: false
-      channel: "CURRENT"
-      photon: true
-      serverless: true
-
-      libraries:
-        - notebook:
-            path: ./notebooks/lzn_dlt_junction_bloodwork.py
-
-      configuration:
-        catalog: "${var.catalog}"
-        schema: "lzn_junction_bloodwork"
-        volume_name: "${var.volume_name}"
-        env: "${var.env}"
-        source_folder: "vol_junction_bloodwork"
-
-      tags:
-        tenant: "ch"
-
-    raw_junction_bloodwork:
-      name: "ch-raw-dlt-pipeline-junction-bloodwork1-${var.env}"
-      catalog: "${var.catalog}"
-      schema: "raw_junction_bloodwork"
-      development: false
-      continuous: false
-      channel: "CURRENT"
-      photon: true
-      serverless: true
-
-      libraries:
-        - notebook:
-            path: ./notebooks/raw_dlt_junction_bloodwork.py
-
-      configuration:
-        catalog: "${var.catalog}"
-        schema: "raw_junction_bloodwork"
-        volume_name: "${var.volume_name}"
-        env: "${var.env}"
-
-      tags:
-        tenant: "ch"
+include:
+  - resources/*.ym
 
 variables:
   catalog:
