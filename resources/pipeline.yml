@@ -1,52 +1,48 @@
 resources:
   pipelines:
-
-    # ── Pipeline 1: Landing Zone ─────────────────────────
     lzn_junction_bloodwork:
-      name:        "ch-lzn-dlt-pipeline-junction-bloodwork-${var.env}"
-      catalog:     "${var.catalog}"
-      schema:      "lzn_junction_bloodwork"             # ← changed from target
-
+      name: "ch-lzn-dlt-pipeline-junction-bloodwork1-${var.env}"
+      catalog: "${var.catalog}"
+      schema: "lzn_junction_bloodwork"
       development: false
-      continuous:  false
-      channel:     CURRENT
-      photon:      true
-      serverless:  true
+      continuous: false
+      channel: "CURRENT"
+      photon: true
+      serverless: true
 
       libraries:
         - notebook:
-            path: ../notebooks/lzn_dlt_junction_bloodwork.py
+            path: ./notebooks/lzn_dlt_junction_bloodwork.py
 
       configuration:
-        catalog:     "${var.catalog}"
-        schema:      "lzn_junction_bloodwork"
+        catalog: "${var.catalog}"
+        schema: "lzn_junction_bloodwork"
         volume_name: "${var.volume_name}"
-        env:         "${var.env}"
+        env: "${var.env}"
+        source_folder: "vol_junction_bloodwork"
 
       tags:
         tenant: "ch"
 
-    # ── Pipeline 2: Raw / Bronze Zone ────────────────────
     raw_junction_bloodwork:
-      name:        "ch-raw-dlt-pipeline-junction-bloodwork-${var.env}"
-      catalog:     "${var.catalog}"
-      schema:      "raw_junction_bloodwork"             # ← changed from target
-
+      name: "ch-raw-dlt-pipeline-junction-bloodwork1-${var.env}"
+      catalog: "${var.catalog}"
+      schema: "raw_junction_bloodwork"
       development: false
-      continuous:  false
-      channel:     CURRENT
-      photon:      true
-      serverless:  true
+      continuous: false
+      channel: "CURRENT"
+      photon: true
+      serverless: true
 
       libraries:
         - notebook:
-            path: ../notebooks/raw_dlt_junction_bloodwork.py
+            path: ./notebooks/raw_dlt_junction_bloodwork.py
 
       configuration:
-        catalog:     "${var.catalog}"
-        schema:      "raw_junction_bloodwork"
+        catalog: "${var.catalog}"
+        schema: "raw_junction_bloodwork"
         volume_name: "${var.volume_name}"
-        env:         "${var.env}"
+        env: "${var.env}"
 
       tags:
         tenant: "ch"
