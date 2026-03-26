@@ -4,7 +4,7 @@ bundle:
 resources:
   pipelines:
     lzn_junction_bloodwork:
-      name: "ch-lzn-dlt-pipeline-junction-bloodwork-${var.env}"
+      name: "ch-lzn-dlt-pipeline-junction-bloodwork1-${var.env}"
       catalog: "${var.catalog}"
       schema: "lzn_junction_bloodwork"
       development: false
@@ -28,7 +28,7 @@ resources:
         tenant: "ch"
 
     raw_junction_bloodwork:
-      name: "ch-raw-dlt-pipeline-junction-bloodwork-${var.env}"
+      name: "ch-raw-dlt-pipeline-junction-bloodwork1-${var.env}"
       catalog: "${var.catalog}"
       schema: "raw_junction_bloodwork"
       development: false
